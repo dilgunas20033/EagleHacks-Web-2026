@@ -15,7 +15,7 @@ function App() {
         <section id="home" className="section hero">
           <h1>EAGLEHACKS</h1>
           <h2>#1 HACKATHON IN SWFL</h2>
-          <h3>MARCH 26TH - 29TH 2026</h3>
+          <h3>MARCH 27TH - 29TH 2026</h3>
 
           <div className="hero-cta">
             <a className="btn register" href="https://uz9vkfej.forms.app/untitled-form" target="_blank">Sign Up</a>
