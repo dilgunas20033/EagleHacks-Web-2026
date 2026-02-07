@@ -17,7 +17,7 @@ export default function Nav() {
     <nav className={`site-nav ${open ? 'open' : ''}`} aria-label="Main navigation">
       <div className="nav-inner">
         <div className="nav-left">
-          <a href="#" className="brand" onClick={close}>
+          <a href="#home" className="brand" onClick={close}>
             <img src={logoSrc} alt="Logo" className="nav-logo" />
           </a>
 
@@ -34,15 +34,17 @@ export default function Nav() {
           </button>
 
           <ul id="primary-navigation" className={`nav-links ${open ? 'open' : ''}`}>
-            <li><a href="#" onClick={close}>Home</a></li>
-            <li><a href="#sponsors" onClick={close}>Sponsors</a></li>
-            <li><a href="#" onClick={close}>Our Team</a></li>
+            <li><a href="#about" onClick={close}>About</a></li>
+            <li><a href="#faq" onClick={close}>FAQ</a></li>
+            <li><a href="#connect" onClick={close}>Connect</a></li>
             {/* mobile-only sign up (appears in dropdown on phones) */}
+            <li className="mobile-signup"><a className="btn guide" href="#" target="_blank" rel="noopener noreferrer" onClick={close}>Hacker Guide</a></li>
             <li className="mobile-signup"><a className="btn signup" href="https://uz9vkfej.forms.app/untitled-form" target="_blank" rel="noopener noreferrer" onClick={close}>Sign Up</a></li>
           </ul>
         </div>
 
         <div className="nav-right">
+          <a className="btn guide" href="#" target="_blank" rel="noopener noreferrer">Hacker Guide</a>
           <a className="btn signup" href="https://uz9vkfej.forms.app/untitled-form" target="_blank" rel="noopener noreferrer">Sign Up</a>
         </div>
       </div>

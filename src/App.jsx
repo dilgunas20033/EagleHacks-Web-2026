@@ -4,7 +4,7 @@ import './App.css'
 import heroImg from './assets/EagleHacks2026.png'
 import GalleryStats from './GalleryStats'
 import AboutSection from './AboutSection'
-import SponsorPage from './SponsorPage'
+import FaqSection from './FaqSection'
 
 function App() {
   const [imgLoaded, setImgLoaded] = useState(false)
@@ -12,7 +12,7 @@ function App() {
     <>
       <Nav />
       <main className="app-main">
-        <div className="hero">
+        <section id="home" className="section hero">
           <h1>EAGLEHACKS</h1>
           <h2>#1 HACKATHON IN SWFL</h2>
           <h3>MARCH 26TH - 29TH 2026</h3>
@@ -31,11 +31,32 @@ function App() {
               />
             </div>
           </div>
-        </div>
+        </section>
       </main>
-      <GalleryStats />
-      <AboutSection />
-      {/* <SponsorPage /> */}
+      <section id="stats" className="section">
+        <GalleryStats />
+      </section>
+      <section id="about" className="section">
+        <AboutSection />
+      </section>
+      <section id="faq" className="section">
+        <FaqSection />
+      </section>
+
+      <footer id="connect" className="site-footer">
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <h3>Follow EagleHacks</h3>
+            <p>Stay in the loop for updates, workshops, and announcements.</p>
+          </div>
+          <div className="social-links">
+            <a href="https://instagram.com/fgcu_cssec" target="_blank" rel="noopener noreferrer">Instagram</a>
+            {/* <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer">Discord</a> */}
+            <a href="mailto:fgcu.cssec@gmail.com">Email</a>
+            {/* <a href="https://www.linkedin.com/company/eaglehacks/" target="_blank" rel="noopener noreferrer">LinkedIn</a> */}
+          </div>
+        </div>
+      </footer>
 
     </>
   )
