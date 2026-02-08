@@ -20,6 +20,8 @@
   padding: 2rem 1.5rem 1.5rem;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .team-grid {
@@ -28,6 +30,7 @@
   justify-content: flex-start;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
   scroll-behavior: smooth;
   padding-bottom: 0.5rem;
   -ms-overflow-style: none;
@@ -128,6 +131,12 @@
   gap: 0.4rem;
 }
 
+.team-page-label {
+  display: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+}
+
 .team-dot {
   width: 10px;
   height: 10px;
@@ -142,6 +151,21 @@
 }
 
 @media (max-width: 720px) {
+  .team-card {
+    padding: 1.5rem 0.75rem 1.25rem;
+  }
+
+  .team-grid {
+    gap: 0.75rem;
+    padding-inline: 0.5rem;
+    scroll-padding-inline: 0.5rem;
+  }
+
+  .team-member {
+    min-width: 100%;
+    scroll-snap-align: start;
+  }
+
   .team-controls {
     grid-template-columns: 1fr;
     gap: 0.75rem;
@@ -149,5 +173,13 @@
 
   .team-controls button {
     width: 100%;
+  }
+
+  .team-dots {
+    display: none;
+  }
+
+  .team-page-label {
+    display: block;
   }
 }

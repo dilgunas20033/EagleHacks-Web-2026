@@ -33,7 +33,7 @@ const getPhoto = (name) => {
 const perPageForWidth = (width) => {
   if (width >= 1024) return 4
   if (width >= 720) return 3
-  return 2
+  return 1
 }
 
 export default function TeamSection() {
@@ -133,6 +133,9 @@ export default function TeamSection() {
                 onClick={() => scrollToPage(index)}
               />
             ))}
+          </div>
+          <div className="team-page-label" aria-live="polite">
+            {page + 1} / {totalPages}
           </div>
           <button type="button" onClick={goNext} aria-label="Next team members">
             Next &rarr;
