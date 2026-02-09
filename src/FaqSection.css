@@ -92,3 +92,13 @@
   line-height: 1.6;
   opacity: 0.9;
 }
+
+.faq-item a {
+  color: #ffb89f;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.faq-item a:hover {
+  color: #ffd0bf;
+}

@@ -80,9 +80,20 @@ const faqSections = [
           'Reach out to our team and we will get you the right information. Sponsor materials will be shared soon.',
       },
       {
-        question: 'How can I mentor or volunteer?',
-        answer:
-          'We welcome mentors and volunteers. Sign-up details will be posted as we get closer to the event.',
+        question: 'How can I judge or volunteer?',
+        answer: (
+          <>
+            We welcome judges and volunteers. Judges can use this {' '}
+            <a href="https://forms.cloud.microsoft/r/JtTmPdr8sL" target="_blank" rel="noopener noreferrer">
+              Judging form
+            </a>
+            . Volunteers can use this {' '}
+            <a href="https://forms.cloud.microsoft/r/AYUNcWbP7G" target="_blank" rel="noopener noreferrer">
+              Volunteering form
+            </a>
+            .
+          </>
+        ),
       },
     ],
   },
