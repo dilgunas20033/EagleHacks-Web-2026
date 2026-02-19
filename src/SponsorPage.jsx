@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import './SponsorPage.css'
-import arthrexLogo from './assets/sponsors/arthrex.svg'
-import eightpointLogo from './assets/sponsors/Eightpoint.svg'
 
-const sponsors = [
-  { name: 'Arthrex', logo: arthrexLogo, href: 'https://www.arthrex.com/', theme: 'light' },
-  { name: 'Eightpoint', logo: eightpointLogo, href: 'https://eightpoint.io/', theme: 'dark' },
+const logos = import.meta.glob('./assets/sponsors/*.{svg,jpg,png}', { eager: true, import: 'default' })
+
+const sponsorData = [
+  { name: 'Arthrex', file: 'arthrex.svg', href: 'https://www.arthrex.com/', theme: 'light' },
+  { name: 'Eightpoint', file: 'Eightpoint.svg', href: 'https://eightpoint.io/', theme: 'dark' },
 ]
 
 export default function SponsorPage() {
+  const sponsors = useMemo(() => 
+    sponsorData.map(sponsor => ({
+      ...sponsor,
+      logo: logos[`./assets/sponsors/${sponsor.file}`]
+    }))
+  , [])
   return (
     <section id="sponsors" className="sponsors-section">
       <h2 className="sponsors-title">Sponsors</h2>
