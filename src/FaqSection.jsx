@@ -113,10 +113,15 @@ const faqSections = [
 
 export default function FaqSection() {
   const [activeSection, setActiveSection] = useState(faqSections[0].id)
+  const [openQuestion, setOpenQuestion] = useState(null)
   const activeItems = useMemo(
     () => faqSections.find((section) => section.id === activeSection)?.items ?? [],
     [activeSection]
   )
+
+  const handleToggle = (question) => {
+    setOpenQuestion((prev) => (prev === question ? null : question))
+  }
 
   return (
     <div className="faq-section">
@@ -132,7 +137,10 @@ export default function FaqSection() {
             role="tab"
             aria-selected={activeSection === section.id}
             className={`faq-tab ${activeSection === section.id ? 'active' : ''}`}
-            onClick={() => setActiveSection(section.id)}
+            onClick={() => {
+              setActiveSection(section.id)
+              setOpenQuestion(null)
+            }}
           >
             {section.title}
           </button>
@@ -140,10 +148,22 @@ export default function FaqSection() {
       </div>
       <div className="faq-list" role="tabpanel">
         {activeItems.map((item) => (
-          <details key={item.question} className="faq-item">
-            <summary>{item.question}</summary>
-            <p>{item.answer}</p>
-          </details>
+          <div
+            key={item.question}
+            className={`faq-item ${openQuestion === item.question ? 'open' : ''}`}
+          >
+            <button
+              type="button"
+              className="faq-question"
+              aria-expanded={openQuestion === item.question}
+              onClick={() => handleToggle(item.question)}
+            >
+              {item.question}
+            </button>
+            <div className="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </div>
         ))}
       </div>
     </div>
