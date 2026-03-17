@@ -7,13 +7,17 @@
 }
 
 .faq-section h2 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  margin-bottom: 0.4rem;
+  font-size: clamp(2rem, 6vw, 5rem);
+  margin-bottom: 0.4rem; 
+  font-family: "Contrail One", sans-serif; 
+  
 }
 
 .faq-intro {
   margin: 0 0 1.4rem;
   opacity: 0.85;
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 400;
 }
 
 .faq-tabs {
@@ -22,6 +26,7 @@
   gap: 0.7rem;
   margin: 1.2rem 0 1.6rem;
   justify-content: center;
+  
 }
 
 .faq-tab {
@@ -35,6 +40,8 @@
   color: #ffffff;
   cursor: pointer;
   transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 300;
 }
 
 .faq-tab:hover {
@@ -51,6 +58,8 @@
   display: grid;
   gap: 0.9rem;
   text-align: center;
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 300;
 }
 
 .faq-item {
@@ -60,20 +69,20 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.faq-item summary {
+.faq-question {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: inherit;
   cursor: pointer;
   font-weight: 600;
-  list-style: none;
   position: relative;
   text-align: center;
   padding: 0 1.6rem;
+  font: inherit;
 }
 
-.faq-item summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-item summary::after {
+.faq-question::after {
   content: '+';
   position: absolute;
   right: 0;
@@ -81,16 +90,41 @@
   transform: translateY(-50%);
   font-weight: 700;
   color: #d94b2b;
+  transition: transform 200ms ease;
 }
 
-.faq-item[open] summary::after {
+.faq-item.open .faq-question::after {
   content: '-';
 }
 
 .faq-item p {
-  margin: 0.6rem 0 0;
+  margin: 0;
   line-height: 1.6;
   opacity: 0.9;
+}
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: grid-template-rows 260ms ease, opacity 220ms ease, transform 260ms ease;
+}
+
+.faq-answer > p {
+  overflow: hidden;
+  padding-top: 0;
+  transition: padding-top 260ms ease;
+}
+
+.faq-item.open .faq-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-item.open .faq-answer > p {
+  padding-top: 0.6rem;
 }
 
 .faq-item a {
@@ -101,4 +135,11 @@
 
 .faq-item a:hover {
   color: #ffd0bf;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-answer,
+  .faq-answer > p {
+    transition: none;
+  }
 }

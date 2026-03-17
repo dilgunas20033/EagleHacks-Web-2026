@@ -35,9 +35,10 @@ const perPageForWidth = (width) => {
 }
 
 export default function TeamSection() {
-  const listRef = useRef(null)
+  const sectionRef = useRef(null)
   const [perPage, setPerPage] = useState(perPageForWidth(window.innerWidth))
   const [page, setPage] = useState(0)
+  const [isInView, setIsInView] = useState(false)
 
   useEffect(() => {
     const onResize = () => {
@@ -46,52 +47,69 @@ export default function TeamSection() {
         return prev === next ? prev : next
       })
     }
+
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  const totalPages = useMemo(
-    () => Math.max(1, Math.ceil(teamMembers.length / perPage)),
-    [perPage]
-  )
+  const teamPages = useMemo(() => {
+    const pages = []
+    for (let index = 0; index < teamMembers.length; index += perPage) {
+      pages.push(teamMembers.slice(index, index + perPage))
+    }
+    return pages
+  }, [perPage])
+
+  const totalPages = teamPages.length
+  const activePage = Math.min(page, totalPages - 1)
+  const currentMembers = teamPages[activePage] ?? teamPages[0]
 
   useEffect(() => {
-    setPage((prev) => Math.min(prev, totalPages - 1))
-  }, [totalPages])
-
-  const scrollToPage = (nextPage) => {
-    const node = listRef.current
+    const node = sectionRef.current
     if (!node) return
-    const width = node.clientWidth
-    node.scrollTo({ left: nextPage * width, behavior: 'smooth' })
-    setPage(nextPage)
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting)
+      },
+      { threshold: 0.45 }
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isInView || totalPages <= 1) return
+
+    const intervalId = window.setInterval(() => {
+      setPage((prev) => (prev + 1) % totalPages)
+    }, 2800)
+
+    return () => window.clearInterval(intervalId)
+  }, [isInView, totalPages])
+
+  const goToPage = (nextPage) => {
+    const clampedPage = Math.max(0, Math.min(nextPage, totalPages - 1))
+    setPage(clampedPage)
   }
 
   const goPrev = () => {
-    const nextPage = (page - 1 + totalPages) % totalPages
-    scrollToPage(nextPage)
+    const nextPage = (activePage - 1 + totalPages) % totalPages
+    goToPage(nextPage)
   }
 
   const goNext = () => {
-    const nextPage = (page + 1) % totalPages
-    scrollToPage(nextPage)
-  }
-
-  const onScroll = () => {
-    const node = listRef.current
-    if (!node) return
-    const width = node.clientWidth
-    if (!width) return
-    const nextPage = Math.round(node.scrollLeft / width)
-    if (nextPage !== page) setPage(nextPage)
+    const nextPage = (activePage + 1) % totalPages
+    goToPage(nextPage)
   }
 
   return (
-    <div className="team-section">
+    <div className="team-section" ref={sectionRef}>
       <h2>Meet the Organizers</h2>
       <div className="team-card">
-        <div className="team-grid" ref={listRef} onScroll={onScroll}>
-          {teamMembers.map((member, index) => {
+        <div className="team-grid" style={{ gridTemplateColumns: `repeat(${perPage}, minmax(0, 1fr))` }}>
+          {currentMembers.map((member, index) => {
             const photo = getPhoto(member.name)
             const initials = member.name
               .split(' ')
@@ -118,25 +136,25 @@ export default function TeamSection() {
         </div>
         <div className="team-controls">
           <button type="button" onClick={goPrev} aria-label="Previous team members">
-            &larr; Previous
+            Previous
           </button>
           <div className="team-dots" role="tablist" aria-label="Team pages">
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={`dot-${index}`}
                 type="button"
-                className={`team-dot ${index === page ? 'active' : ''}`}
+                className={`team-dot ${index === activePage ? 'active' : ''}`}
                 aria-label={`Go to team page ${index + 1}`}
-                aria-pressed={index === page}
-                onClick={() => scrollToPage(index)}
+                aria-pressed={index === activePage}
+                onClick={() => goToPage(index)}
               />
             ))}
           </div>
           <div className="team-page-label" aria-live="polite">
-            {page + 1} / {totalPages}
+            {activePage + 1} / {totalPages}
           </div>
           <button type="button" onClick={goNext} aria-label="Next team members">
-            Next &rarr;
+            Next
           </button>
         </div>
       </div>

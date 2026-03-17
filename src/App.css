@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Contrail+One&family=Fjalla+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Contrail+One&family=Encode+Sans:wght@100..900&family=Fjalla+One&family=Poiret+One&display=swap');
+
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -34,28 +40,33 @@
   text-align: center;
   padding: clamp(2rem, 6vw, 6rem) 1rem clamp(2.5rem, 8vw, 6rem);
   color: #fff;
+  font-family: "Contrail One", sans-serif;
 }
 .hero h1 {
-  font-size: clamp(2.4rem, 8vw, 6rem);
+  font-size: clamp(2.4rem, 8vw, 9rem);
   margin: 0 0 0.6rem;
-  letter-spacing: 1px;
+  letter-spacing: -3px;
   text-transform: uppercase;
+  font-family: "Contrail One", sans-serif;
+  
 }
-.hero h2 { margin: 0 0 0.5rem; font-weight: 600; font-size: clamp(1rem, 2.2vw, 1.8rem); }
-.hero h3 { margin: 0 0 1.5rem; font-weight: 500; font-size: clamp(0.9rem, 1.8vw, 1.2rem); }
+.hero h2 { font-family: "Encode Sans", sans-serif; font-weight: 200; margin: 0 0 0.5rem; font-weight: 700; font-size: clamp(1rem, 2.2vw, 1.8rem); letter-spacing: 7px;}
+.hero h3 { font-family: "Encode Sans", sans-serif; font-weight: 200;margin: 0 0 1.5rem; font-weight: 500; font-size: clamp(0.9rem, 1.8vw, 1.2rem); margin: 10px; letter-spacing: .5px;}
 
-.hero-cta { margin-top: 1.2rem; }
+.hero-cta {  margin-top: 1.2rem; padding: 20px; }
 .btn.register {
   background: linear-gradient(135deg, #ff7a59 0%, #d94b2b 60%, #b63a22 100%);
   color: #fff;
   padding: 1.05rem 2rem;
   border-radius: 999px;
   font-size: 1.15rem;
-  font-weight: 600;
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 18px 44px rgba(217,75,43,0.55), 0 0 30px rgba(255,122,89,0.6), inset 0 1px 0 rgba(255,255,255,0.22);
   animation: cta-pulse 2.8s ease-in-out infinite;
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 600;
+
 }
 .btn.register:hover {
   filter: brightness(1.06);
@@ -126,7 +137,7 @@
 .site-footer {
   margin-top: 4rem;
   padding: 2.5rem 1rem 3rem;
-  background: rgba(0, 0, 0, 0.55);
+  border-radius: 200px;
   color: #fff;
 }
 

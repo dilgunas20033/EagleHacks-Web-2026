@@ -26,6 +26,8 @@
   align-items: center;
   gap: 1.5rem;
   flex: 1 1 auto; /* allow left area to shrink so right button stays visible */
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 500;
 }
 
 .brand {
@@ -68,17 +70,20 @@
 
 .btn.signup {
   display: inline-block;
-  background: #d94b2b; /* mars red */
-  color: white;
+  background: linear-gradient(135deg, #ff7a59 0%, #d94b2b 60%, #b63a22 100%);
+  color: #fff;
   padding: 0.5rem 1.1rem;
-  border-radius: 24px;
+  border-radius: 999px;
   font-weight: 500;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(217,75,43,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+  box-shadow: 0 18px 44px rgba(217,75,43,0.55), 0 0 30px rgba(255,122,89,0.6), inset 0 1px 0 rgba(255,255,255,0.22);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 500;
 }
 .btn.signup:hover {
-  filter: brightness(1.03);
-  box-shadow: 0 8px 26px rgba(217,75,43,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
 }
 
 .btn.guide {

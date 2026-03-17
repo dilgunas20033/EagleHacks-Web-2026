@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './GalleryStats.css'
 import VideoSection from './VideoSection'
-import picA from './assets/eaglehacks.png'
-import picB from './assets/eaglehacks1.png'
+import picA from './assets/eagle1.png'
+import picB from './assets/eagle2.png'
 
 export default function GalleryStats() {
   const [topLoaded, setTopLoaded] = useState(false)

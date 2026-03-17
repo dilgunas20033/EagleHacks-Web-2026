@@ -18,6 +18,7 @@ function App() {
         <section id="home" className="section hero">
           <h1>EAGLEHACKS</h1>
           <h2>#1 HACKATHON IN SWFL</h2>
+          <h3>ACADEMIC BUILDING 9 - FORT MYERS, FL</h3>
           <h3>MARCH 27TH - 29TH 2026</h3>
 
           <div className="hero-cta">
@@ -56,7 +57,6 @@ function App() {
         <div className="footer-inner">
           <div className="footer-brand">
             <img className="footer-logo" src={footerLogo} alt="EagleHacks logo" />
-            <p className="footer-tagline">Florida Gulf Coast University</p>
           </div>
           <div className="footer-icons">
             <a className="footer-icon-link" href="https://instagram.com/fgcu_cssec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

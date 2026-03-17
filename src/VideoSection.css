@@ -16,6 +16,8 @@
   font-weight: 700;
   margin: 0 0 0.5rem 0;
   color: #f6f6f6;
+  font-family: "Contrail One", sans-serif;
+  
 }
 .video-wrapper {
   width: 100%;
@@ -34,6 +36,9 @@
   font-size: 0.95rem;
   color: #dcdcdc;
   margin-top: 0.6rem;
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 300;
+
 }
 
 @media (max-width: 900px) {
