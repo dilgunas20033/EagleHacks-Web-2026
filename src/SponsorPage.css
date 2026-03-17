@@ -76,17 +76,29 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 12px 24px rgba(0, 0, 0, 0.22);
 }
 
+.sponsor-box.is-wide {
+  padding: 10px 12px;
+}
+
 .sponsor-box:hover {
   transform: translateY(-4px);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0 18px 32px rgba(0, 0, 0, 0.28);
 }
 
 .sponsor-logo {
-  width: min(85%, 240px);
-  height: min(70%, 80px);
+  width: 100%;
+  height: 100%;
+  max-width: 250px;
+  max-height: 86px;
   object-fit: contain;
   display: block;
   filter: saturate(1.05);
+}
+
+.sponsor-logo.logo-wide {
+  max-width: none;
+  max-height: 100%;
+  width: 100%;
 }
 
 @media (max-width: 720px) {
